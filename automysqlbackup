@@ -449,10 +449,10 @@ parse_configuration () {
 	opt_dbstatus=( '--status' )
 
     [[ "${CONFIG_mysql_dump_usessl}" = "yes" ]] 		&& {
-	  opt=( "${opt[@]}" "--ssl-cipher='DHE-RSA-AES256-SHA:AES256-SHA:AES128-SHA' --ssl-ca=${CONFIG_ca_path}" )
-	  mysql_opt=( "${mysql_opt[@]}" "--ssl-cipher='DHE-RSA-AES256-SHA:AES256-SHA:AES128-SHA' --ssl-ca=${CONFIG_ca_path}" )
-	  opt_fullschema=( "${opt_fullschema[@]}" "--ssl-cipher='DHE-RSA-AES256-SHA:AES256-SHA:AES128-SHA' --ssl-ca=${CONFIG_ca_path}" )
-	  opt_dbstatus=( "${opt_dbstatus[@]}" "--ssl-cipher='DHE-RSA-AES256-SHA:AES256-SHA:AES128-SHA' --ssl-ca=${CONFIG_ca_path}" )
+	  opt=( "${opt[@]}" "--ssl-ca=${CONFIG_ca_path}" )
+	  mysql_opt=( "${mysql_opt[@]}" "--ssl-ca=${CONFIG_ca_path}" )
+	  opt_fullschema=( "${opt_fullschema[@]}" "--ssl-ca=${CONFIG_ca_path}" )
+	  opt_dbstatus=( "${opt_dbstatus[@]}" "--ssl-ca=${CONFIG_ca_path}" )
     }
     [[ "${CONFIG_mysql_dump_master_data}" ]] && (( ${CONFIG_mysql_dump_master_data} == 1 || ${CONFIG_mysql_dump_master_data} == 2 )) && { opt=( "${opt[@]}" "--master-data=${CONFIG_mysql_dump_master_data}" );}
     [[ "${CONFIG_mysql_dump_single_transaction}" = "yes" ]]	&& {
